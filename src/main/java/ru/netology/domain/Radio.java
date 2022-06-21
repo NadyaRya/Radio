@@ -23,37 +23,55 @@ public class Radio {
     }
 
     public void nextRadioStation() {
-        if (currentRadioStation < 9) {
-            currentRadioStation = currentRadioStation + 1;
-        } else {
+        if (currentRadioStation >= 9) {
             currentRadioStation = 0;
+        } else {
+            currentRadioStation = currentRadioStation + 1;
         }
     }
 
     public void prevRadioStation() {
-        if (currentRadioStation > 0) {
-            currentRadioStation = currentRadioStation - 1;
-        } else {
+        if (currentRadioStation <= 0) {
             currentRadioStation = 9;
+        } else {
+            currentRadioStation = currentRadioStation - 1;
         }
     }
 
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
+            return;
+        }
+        if (currentVolume > 10) {
+            return;
+        }
+        this.currentVolume = currentVolume;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
-            currentVolume = currentVolume + 1;
+        if (currentVolume >= 10) {
+            currentVolume = 0;
         } else {
-            currentVolume = 10;
+            currentVolume = currentVolume + 1;
         }
     }
 
-    public void muting() {
-        if (currentVolume > 0) {
-            currentVolume = currentVolume - 1;
-        } else {
+
+    public int decreaseVolume() {
+        if (currentVolume <= 0) {
             currentVolume = 0;
+        } else {
+            currentVolume = currentVolume - 1;
         }
+
+
+        return 0;
     }
+
 
 }
 
